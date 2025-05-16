@@ -1,11 +1,8 @@
 import express from "express";
+import storeCryptoStats from "../controllers/index.js";
 
 const router = express.Router();
 
-router.get("/stats", (req, res) => {
-  res.send({
-    msg: "stats get route",
-  });
-});
+router.get("/stats", storeCryptoStats);
 
 export { router };
