@@ -16,7 +16,7 @@ async function main() {
   });
 }
 main().catch((err) => {
-  console.log(err.message);
+  logger.error("Error While connecting to Databae");
 });
 
 app.use(express.json());
