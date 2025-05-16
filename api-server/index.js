@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { router } from "./routes/index.js";
+import { logger } from "./utils/logger.js";
 
 const app = express();
 dotenv.config();
@@ -18,11 +19,8 @@ main().catch((err) => {
   console.log(err.message);
 });
 
-
 app.use(express.json());
-app.use("/", router);
-
-
+app.use("/api", router);
 
 app.get("/", (req, res) => {
   res.send({
@@ -31,5 +29,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running at port ${PORT}`);
+  logger.info(`Server is running at port ${PORT}`);
 });
