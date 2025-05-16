@@ -1,14 +1,27 @@
 import mongoose, { Schema } from "mongoose";
 
-const coinSchema = new Schema({
-  name:String,
-  price: Number,
-  market_Cap: Number,
-  "24hrChange": Number,
+const cryptoSchema = new Schema({
+  coin: {
+    type: String,
+    required: true,
+    enum: ["bitcoin", "ethereum", "matic-network"],
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  marketCap: {
+    type: Number,
+    required: true,
+  },
+  "24hChange": {
+    type: Number,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-const statsSchema = new Schema({
-  id: ,
-});
-
-const coin = new mongoose.model("Coin", coinSchema);
+export const CryptoModel = new mongoose.model("CryptoModel", cryptoSchema);
