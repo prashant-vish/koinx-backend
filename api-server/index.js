@@ -1,0 +1,35 @@
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import { router } from "./routes/index.js";
+
+const app = express();
+dotenv.config();
+const PORT = 3000;
+
+const mongo_uri = process.env.MONGO_URI;
+
+async function main() {
+  mongoose.connect(mongo_uri).then(() => {
+    console.log("database Connected");
+  });
+}
+main().catch((err) => {
+  console.log(err.message);
+});
+
+
+app.use(express.json());
+app.use("/", router);
+
+
+
+app.get("/", (req, res) => {
+  res.send({
+    msg: "server is running",
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running at port ${PORT}`);
+});
