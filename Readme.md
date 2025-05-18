@@ -27,7 +27,7 @@ Install and run NATS server:
 
 bash
 # Using Docker
-docker run -p 4222:4222 -p 8222:8222 -p 6222:6222 --name nats-server nats:latest
+docker run -p 4222:4222 -p 8222:8222 nats
 
 # Or download and run the NATS server from https://nats.io/download/
 4. Configure Environment Variables
